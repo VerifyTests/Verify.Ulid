@@ -16,9 +16,44 @@ public static class VerifyUlid
         InnerVerifier.ThrowIfVerifyHasBeenRun();
 
         CounterContext.Init();
+        VerifierSettings.AddScrubber(ScrubInline);
         VerifierSettings
             .AddExtraSettings(_ =>
                 _.Converters.Add(new UlidConverter()));
+    }
+
+    static void ScrubInline(StringBuilder builder, Counter counter, IReadOnlyDictionary<string, object> context)
+    {
+        if (!context.ScrubUlids())
+        {
+            return;
+        }
+
+        const int ulidLength = 26;
+        var builderIndex = 0;
+        var index = 0;
+
+        while (true)
+        {
+            if (index > builder.Length - ulidLength)
+            {
+                break;
+            }
+
+            var slice = builder.ToString(index, ulidLength);
+            if (slice.Any(_ => !char.IsLetterOrDigit(_)) ||
+                !Ulid.TryParse(slice, out var ulid))
+            {
+                index++;
+                builderIndex++;
+                continue;
+            }
+
+            var next = CounterContext.Current.Next(ulid);
+            builder.Overwrite($"Ulid_{next}", builderIndex, ulidLength);
+            builderIndex += ulidLength;
+            index += ulidLength;
+        }
     }
 
     public static void DontScrubUlids(this VerifySettings settings) =>
@@ -38,5 +73,11 @@ public static class VerifyUlid
         }
 
         return true;
+    }
+
+    static void Overwrite(this StringBuilder builder, string value, int index, int length)
+    {
+        builder.Remove(index, length);
+        builder.Insert(index, value);
     }
 }

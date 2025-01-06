@@ -8,6 +8,34 @@ public class Samples
         return Verify(id);
     }
 
+    [Test]
+    public Task String()
+    {
+        var id = Ulid.NewUlid().ToString();
+        return Verify(id);
+    }
+
+    [Test]
+    public Task Prefixed()
+    {
+        var id = Ulid.NewUlid().ToString();
+        return Verify($" {id}");
+    }
+
+    [Test]
+    public Task Suffixed()
+    {
+        var id = Ulid.NewUlid().ToString();
+        return Verify($"{id} ");
+    }
+
+    [Test]
+    public Task Padded()
+    {
+        var id = Ulid.NewUlid().ToString();
+        return Verify($" {id} ");
+    }
+
     #region Nested
 
     [Test]
@@ -15,11 +43,11 @@ public class Samples
     {
         var id = Ulid.NewUlid();
         var target = new Person
-            {
-                Id = id,
-                Name = "Sarah",
-                Description = $"Sarah ({id})"
-            };
+        {
+            Id = id,
+            Name = "Sarah",
+            Description = $"Sarah ({id})"
+        };
         return Verify(target);
     }
 
