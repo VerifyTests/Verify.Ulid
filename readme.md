@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ff4ms9mevndkui7l?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Ulid)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.Ulid.svg)](https://www.nuget.org/packages/Verify.Ulid/)
 
-Extends [Verify](https://github.com/VerifyTests/Verify) to enable scrubbing of Universally Unique Lexicographically Sortable Identifiers via [Ulid](https://github.com/Cysharp/Ulid).
+Extends [Verify](https://github.com/VerifyTests/Verify) to enable scrubbing of Universally Unique Lexicographically Sortable Identifiers via [Ulid](https://github.com/Cysharp/Ulid) package.
 
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
@@ -118,3 +118,8 @@ Result:
 ```
 <sup><a href='/src/Tests/Samples.DontScrubInstance.verified.txt#L1-L5' title='Snippet source file'>snippet source</a> | <a href='#snippet-Samples.DontScrubInstance.verified.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
+
+
+## Icon
+
+[Pattern](https://thenounproject.com/icon/pattern-7353536/) designed by [Mohamed Salah Hajji](https://thenounproject.com/creator/hajjisaleh.mohamed24/) from [The Noun Project](https://thenounproject.com).
