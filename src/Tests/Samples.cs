@@ -57,8 +57,10 @@ public class Samples
     public Task TooLongPadded() =>
         Verify(" 01JGXD29BZA4PD6KSHBZWHMDPQA ");
 
+    #region DontScrub
+
     [Test]
-    public Task NestedScrubbingDontScrub()
+    public Task DontScrubFluent()
     {
         var id = Ulid.Parse("01JGXG0GDGQEP47CBQ65E50HYH");
         var target = new Person
@@ -71,10 +73,27 @@ public class Samples
             .DontScrubUlids();
     }
 
+    [Test]
+    public Task DontScrubInstance()
+    {
+        var id = Ulid.Parse("01JGXG0GDGQEP47CBQ65E50HYH");
+        var target = new Person
+        {
+            Id = id,
+            Name = "Sarah",
+            Description = $"Sarah ({id})"
+        };
+        var settings = new VerifySettings();
+        settings.DontScrubUlids();
+        return Verify(target, settings);
+    }
+
+    #endregion
+
     #region Nested
 
     [Test]
-    public Task NestedScrubbing()
+    public Task UlidScrubbing()
     {
         var id = Ulid.NewUlid();
         var target = new Person
