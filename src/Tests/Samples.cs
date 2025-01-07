@@ -16,6 +16,11 @@ public class Samples
     }
 
     [Test]
+    public Task StringDontScrub() =>
+        Verify("01JGXD29BZA4PD6KSHBZWHMDPQ")
+            .DontScrubUlids();
+
+    [Test]
     public Task Prefixed()
     {
         var id = Ulid.NewUlid().ToString();
@@ -34,6 +39,36 @@ public class Samples
     {
         var id = Ulid.NewUlid().ToString();
         return Verify($" {id} ");
+    }
+
+    [Test]
+    public Task TooLong() =>
+        Verify("01JGXD29BZA4PD6KSHBZWHMDPQA");
+
+    [Test]
+    public Task TooLongPrefixed() =>
+        Verify(" 01JGXD29BZA4PD6KSHBZWHMDPQA");
+
+    [Test]
+    public Task TooLongSuffixed() =>
+        Verify("01JGXD29BZA4PD6KSHBZWHMDPQA ");
+
+    [Test]
+    public Task TooLongPadded() =>
+        Verify(" 01JGXD29BZA4PD6KSHBZWHMDPQA ");
+
+    [Test]
+    public Task NestedScrubbingDontScrub()
+    {
+        var id = Ulid.Parse("01JGXG0GDGQEP47CBQ65E50HYH");
+        var target = new Person
+        {
+            Id = id,
+            Name = "Sarah",
+            Description = $"Sarah ({id})"
+        };
+        return Verify(target)
+            .DontScrubUlids();
     }
 
     #region Nested

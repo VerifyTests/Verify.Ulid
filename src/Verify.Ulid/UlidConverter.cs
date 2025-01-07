@@ -5,7 +5,7 @@
     {
         if (!writer.Context.ScrubUlids())
         {
-            writer.WriteValue(value);
+            writer.WriteValue(value.ToString());
             return;
         }
 

@@ -40,6 +40,28 @@ public static class VerifyUlid
                 break;
             }
 
+            var nextIndex = index + ulidLength;
+            if (nextIndex < builder.Length )
+            {
+                var nextChar = builder[nextIndex];
+                if (char.IsLetterOrDigit(nextChar))
+                {
+                    index++;
+                    builderIndex++;
+                    continue;
+                }
+            }
+
+            if (index > 0)
+            {
+                if (char.IsLetterOrDigit(builder[index - 1]))
+                {
+                    index++;
+                    builderIndex++;
+                    continue;
+                }
+            }
+
             var slice = builder.ToString(index, ulidLength);
             if (slice.Any(_ => !char.IsLetterOrDigit(_)) ||
                 !Ulid.TryParse(slice, out var ulid))
