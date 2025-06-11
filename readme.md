@@ -10,9 +10,9 @@ Extends [Verify](https://github.com/VerifyTests/Verify) to enable scrubbing of U
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
 
-## NuGet package
+## NuGet
 
-https://nuget.org/packages/Verify.Ulid/
+ * https://nuget.org/packages/Verify.Ulid
 
 
 ## Usage
