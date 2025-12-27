@@ -1,7 +1,7 @@
 # <img src="/src/icon.png" height="30px"> Verify.Ulid
 
 [![Discussions](https://img.shields.io/badge/Verify-Discussions-yellow?svg=true&label=)](https://github.com/orgs/VerifyTests/discussions)
-[![Build status](https://ci.appveyor.com/api/projects/status/soell7l73pbakm8u?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Ulid)
+[![Build status](https://img.shields.io/appveyor/build/SimonCropp/Verify-Ulid)](https://ci.appveyor.com/project/SimonCropp/Verify-Ulid)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.Ulid.svg)](https://www.nuget.org/packages/Verify.Ulid/)
 
 Extends [Verify](https://github.com/VerifyTests/Verify) to enable scrubbing of Universally Unique Lexicographically Sortable Identifiers via [Ulid](https://github.com/Cysharp/Ulid) package.<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
